@@ -11,8 +11,11 @@
   outputs = { self, nixpkgs, home-manager }: {
 
     homeConfigurations."raina" = home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs { system = "x86_64-linux"; };
-	modules = [ ./home.nix ];
+      pkgs = import nixpkgs { 
+	      system = "x86_64-linux"; 
+	      config.allowUnfree = true;
+	    };
+	    modules = [ ./home.nix ];
     };
 
     packages.x86_64-linux.hello = nixpkgs.legacyPackages.x86_64-linux.hello;
