@@ -1,8 +1,10 @@
 {pkgs, ...}: {
   programs.git = {
     enable = true;
-    userEmail = "chenganlin990326@gmail.com";
+    userEmail = "raina@kaleidoscope.com";
     userName = "Raina";
+
+    extraConfig.push.autoSetupRemote = true;
   };
 
   programs.gh.enable = true;

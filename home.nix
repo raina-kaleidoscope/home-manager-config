@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  imports = [./git.nix];
+  imports = [./shell ./ocr.nix ./rclone.nix];
 
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -23,38 +23,30 @@
     rustup
     bottom
     neovim
-    onedrive
-    onedrivegui
-    obsidian
+    libreoffice
   ];
 
-  xdg.desktopEntries.obsidian = {
-    name = "Obsidian";
-    exec = "obsidian --no-sandbox";
-    icon = "obsidian";
-  };
-
-  
   programs.vscode = {
     enable = true;
     package = (pkgs.vscode.override {commandLineArgs = "--no-sandbox";});
-    extensions = with pkgs.vscode-extensions; [
+    profiles.default.extensions = with pkgs.vscode-extensions; [
       dracula-theme.theme-dracula
       dart-code.flutter
       rust-lang.rust-analyzer
       tamasfe.even-better-toml
       mechatroner.rainbow-csv
-
+      redhat.vscode-yaml
+      bbenoist.nix
+      vue.volar
       bbenoist.nix # nix language support
       kamadorueda.alejandra # better nix formatter
     ];
     mutableExtensionsDir = false;
-    userSettings = {
+    profiles.default.userSettings = {
       workbench.colorTheme = "Dracula";
       files.autoSave = "afterDelay";
     };
   };
-
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
@@ -91,8 +83,6 @@
     # EDITOR = "emacs";
   };
 
-
-  
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }
