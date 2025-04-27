@@ -30,7 +30,7 @@
     enable = true;
     package = (pkgs.vscode.override {commandLineArgs = "--no-sandbox";});
     profiles.default.extensions = with pkgs.vscode-extensions; [
-      dracula-theme.theme-dracula
+      jdinhlife.gruvbox
       dart-code.flutter
       rust-lang.rust-analyzer
       tamasfe.even-better-toml
@@ -43,7 +43,7 @@
     ];
     mutableExtensionsDir = false;
     profiles.default.userSettings = {
-      workbench.colorTheme = "Dracula";
+      workbench.colorTheme = "Gruvbox Dark Hard";
       files.autoSave = "afterDelay";
     };
   };
