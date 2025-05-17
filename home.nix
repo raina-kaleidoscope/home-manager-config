@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  imports = [./shell ./ocr.nix ./rclone.nix];
+  imports = [./shell ./ocr.nix];
 
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -20,9 +20,11 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
+    rustc
     rustup
     bottom
     neovim
+    strawberry
     libreoffice
   ];
 
@@ -45,8 +47,10 @@
     profiles.default.userSettings = {
       workbench.colorTheme = "Gruvbox Dark Hard";
       files.autoSave = "afterDelay";
+      editor.inlayHints.enabled = "offUnlessPressed";
     };
   };
+
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
