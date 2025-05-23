@@ -24,7 +24,6 @@
     rustup
     bottom
     neovim
-    strawberry
     libreoffice
   ];
 
