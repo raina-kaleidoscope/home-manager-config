@@ -24,6 +24,7 @@
     rustup
     bottom
     neovim
+    pdf4qt
     libreoffice
   ];
 
@@ -39,8 +40,10 @@
       redhat.vscode-yaml
       bbenoist.nix
       vue.volar
-      bbenoist.nix # nix language support
-      kamadorueda.alejandra # better nix formatter
+      bbenoist.nix
+      kamadorueda.alejandra
+      eamodio.gitlens
+      # vscodevim.vim
     ];
     mutableExtensionsDir = false;
     profiles.default.userSettings = {
